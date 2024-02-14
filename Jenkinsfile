@@ -7,11 +7,11 @@ pipeline {
     }
     
     environment {
-        AWS_DEFAULT_REGION = 'your_aws_region'
-        LAMBDA_FUNCTION_NAME = 'your_lambda_function_name'
-        GIT_REPO_URL = 'your_git_repo_url'
+        AWS_DEFAULT_REGION = 'us-east-1'
+        LAMBDA_FUNCTION_NAME = 'nodelambdafunction'
+        GIT_REPO_URL = 'https://github.com/vivekraina2023/nodelambdafunction.git'
         TEMP_DIR = '/tmp/lambda_deploy'
-        S3_BUCKET_NAME = 'your_s3_bucket_name'
+        S3_BUCKET_NAME = 'vr01-nodelambdafunction'
         S3_KEY = 'lambda_function.zip'
     }
     
@@ -35,7 +35,7 @@ pipeline {
         stage('Upload to S3') {
             steps {
                 script {
-                    withAWS(region: AWS_DEFAULT_REGION, credentials: 'aws_credentials_id') {
+                    withAWS(region: AWS_DEFAULT_REGION, credentials: 'aws_credentials_id_vivekraina2023') {
                         sh "aws s3 cp $TEMP_DIR/lambda_function.zip s3://$S3_BUCKET_NAME/$S3_KEY"
                     }
                 }
