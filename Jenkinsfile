@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'node:latest'
+            image 'node-with-zip:latest'
             args '-u root' // Ensure root access for Docker container
         }
     }
