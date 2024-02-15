@@ -25,7 +25,7 @@ pipeline {
         stage('Package Lambda Function') {
             steps {
                 script {
-                    sh 'npm install' // Assuming your Node.js Lambda function requires npm dependencies
+                    //sh 'npm install' // Assuming your Node.js Lambda function requires npm dependencies
                     sh 'mkdir -p $TEMP_DIR'
                     sh 'zip -r $TEMP_DIR/lambda_function.zip ./*'
                 }
